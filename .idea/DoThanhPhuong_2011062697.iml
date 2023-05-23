@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="AdditionalModuleElements">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/DoThanhPhuong_2011062697/src/main/resources/static/css" />
+      <excludeFolder url="file://$MODULE_DIR$/DoThanhPhuong_2011062697/src/main/resources/static/css/static" />
+    </content>
+  </component>
+</module>
