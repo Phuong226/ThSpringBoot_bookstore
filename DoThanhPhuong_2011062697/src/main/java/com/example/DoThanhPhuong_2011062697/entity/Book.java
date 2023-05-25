@@ -22,6 +22,7 @@ public class Book {
 
     @Column(name = "author")
     private String author;
+
     @Column(name = "price")
     @NotNull(message = "Price is required")
     private  Double price;

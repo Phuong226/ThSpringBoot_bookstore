@@ -9,6 +9,13 @@
 <th:block th:replace="layout :: header"></th:block>
 <div class="container">
   <h1 th:text=${title}></h1>
+  <form th:action="@{/books/search}" method="GET" class="mb-3">
+    <div class="input-group">
+      <input type="text" class="form-control" name="keyword" placeholder="Search by title or category">
+      <div id="autocompleteContainer"></div>
+      <button class="btn btn-primary" type="submit">Search</button>
+    </div>
+  </form>
   <table class="table">
     <tr>
       <th>ID</th>
@@ -30,6 +37,9 @@
            onclick="return confirm('Are you sure?')">Delete</a>
       </td>
     </tr>
+  </table>
+</div>
+</body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -79,20 +89,5 @@
         });
     </script>
     </head>
-    <body>
-    <!-- Các thành phần HTML khác -->
 
-    <form th:action="@{/books/search}" method="GET" class="mb-3">
-      <div class="input-group">
-        <input type="text" class="form-control" name="keyword" placeholder="Search by title or category">
-        <div id="autocompleteContainer"></div>
-        <button class="btn btn-primary" type="submit">Search</button>
-      </div>
-    </form>
-
-
-   </table>
-</div>
-
-</body>
-</html>
+ </html>
