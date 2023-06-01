@@ -1,8 +1,11 @@
 package com.example.DoThanhPhuong_2011062697.controller;
 
+import com.example.DoThanhPhuong_2011062697.Daos.Item;
 import com.example.DoThanhPhuong_2011062697.entity.Book;
 import com.example.DoThanhPhuong_2011062697.services.BookService;
+import com.example.DoThanhPhuong_2011062697.services.CartService;
 import com.example.DoThanhPhuong_2011062697.services.CategoryService;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,10 +16,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/books")
+@RequestMapping("/book")
 public class BookController {
     @Autowired
     private BookService bookService;
+    @Autowired
+    private CartService cartService ;
     @Autowired
     private CategoryService categoryService;
     @GetMapping
@@ -45,13 +50,13 @@ public class BookController {
             return "book/add";
         }
         bookService.addBook(book);
-        return "redirect:/books";
+        return "redirect:/book";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteBook(@PathVariable("id") Long bookId) {
         bookService.deleteBook(bookId);
-        return "redirect:/books";
+        return "redirect:/book";
     }
 
     @GetMapping("/edit/{id}")
@@ -70,7 +75,7 @@ public class BookController {
         book.setPrice(updatedBook.getPrice());
         book.setCategory(updatedBook.getCategory());
         bookService.updateBook(book);
-        return "redirect:/books";
+        return "redirect:/book";
     }
 
 
@@ -80,6 +85,18 @@ public class BookController {
         model.addAttribute("books", books);
         model.addAttribute("keyword", keyword);
         return "book/list";
+    }
+    @PostMapping("/add-to-cart")
+    public String addToCart(HttpSession session,
+                            @RequestParam long id,
+                            @RequestParam String name,
+                            @RequestParam double price,
+                            @RequestParam(defaultValue = "1") int quantity)
+    {
+        var cart = cartService.getCart(session);
+        cart.addItems(new Item(id, name, price, quantity));
+        cartService.updateCart(session, cart);
+        return "redirect:/book";
     }
 
 }
