@@ -9,7 +9,7 @@
 <th:block th:replace="layout :: header"></th:block>
 <div class="container">
   <h1 th:text=${title}></h1>
-  <form th:action="@{/books/search}" method="GET" class="mb-3">
+  <form th:action="@{/book/search}" method="GET" class="mb-3">
     <div class="input-group">
       <input type="text" class="form-control" name="keyword" placeholder="Search by title or category">
       <div id="autocompleteContainer"></div>
@@ -32,8 +32,8 @@
       <td th:text="${book.price}"></td>
       <td th:text="${book.category.name}"></td>
       <td>
-        <a class="btn btn-primary" th:href="@{/books/edit/{id}(id=${book.id})}">Edit</a>
-        <a class="btn btn-dark" th:href="@{/books/delete/{id}(id=${book.id})}"
+        <a class="btn btn-primary" th:href="@{/book/edit/{id}(id=${book.id})}">Edit</a>
+        <a class="btn btn-dark" th:href="@{/book/delete/{id}(id=${book.id})}"
            onclick="return confirm('Are you sure?')">Delete</a>
 <!--        <form th:action="@{/books/add-to-cart}" method="post" class="d-inline">-->
 <!--          <input type="hidden" name="id" th:value="${book.getId()}">-->
