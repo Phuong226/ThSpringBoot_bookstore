@@ -35,15 +35,15 @@
         <a class="btn btn-primary" th:href="@{/book/edit/{id}(id=${book.id})}">Edit</a>
         <a class="btn btn-dark" th:href="@{/book/delete/{id}(id=${book.id})}"
            onclick="return confirm('Are you sure?')">Delete</a>
-<!--        <form th:action="@{/books/add-to-cart}" method="post" class="d-inline">-->
-<!--          <input type="hidden" name="id" th:value="${book.getId()}">-->
-<!--          <input type="hidden" name="name" th:value="${book.getTitle()}">-->
-<!--          <input type="hidden" name="price"-->
-<!--                 th:value="${book.getPrice()}">-->
-<!--          <button type="submit" class="btn btn-success"-->
-<!--                  onclick="return confirm('Are you sure you want toadd this book to cart?')">-->
-<!--            Add to cart</button>-->
-<!--        </form>-->
+        <form th:action="@{/book/add-to-cart}" method="post" class="d-inline">
+          <input type="hidden" name="id" th:value="${book.getId()}">
+          <input type="hidden" name="name" th:value="${book.getTitle()}">
+          <input type="hidden" name="price"
+                 th:value="${book.getPrice()}">
+          <button type="submit" class="btn btn-success"
+                  onclick="return confirm('Are you sure you want toadd this book to cart?')">
+            Add to cart</button>
+        </form>
       </td>
     </tr>
   </table>

@@ -9,6 +9,7 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Data
 @Entity
 @Table(name = "user")
@@ -31,6 +32,7 @@ public class User {
     @Size(max = 50, message = "Your name must be less than 50 characters")
     @NotBlank(message = "Your name is required")
     private String name;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Book> books = new ArrayList<>();
 }
